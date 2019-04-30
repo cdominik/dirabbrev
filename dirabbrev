@@ -25,7 +25,7 @@ use Getopt::Std;
 ($me = $0)=~s/^.*\///; # the name of this program, for error messages.
 ($home = $ENV{HOME}) =~ s|/$||;
 
-$abbrev_file = "$ENV{HOME}/Dropbox/Apps/dirabbrev/dirabbrev.dat";
+$abbrev_file = "$ENV{HOME}/.abbrev";
 
 # Commands to set and unset environment variables and aliases.
 # These commands are different for different shells.
