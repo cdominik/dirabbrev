@@ -279,17 +279,17 @@ B<dirabbrev> - dynamic abbreviations for directories (paths)
 =head1 SYNOPSIS
 
  alias da 'eval `dirabbrev -e -a \!*`'; da -d
- alias S 'da -s'
- alias G 'da -g'
- alias L 'da -l'
- alias R 'da -r'
+ alias s 'da -s'
+ alias g 'da -g'
+ alias l 'da -l'
+ alias r 'da -r'
 
  da -s name [directory]     # Store abbrev for directory
- S name [directory]         # Same as previous line, uses "S"
- L                          # List abbrevs
- G name                     # cd (go) to dir
+ s name [directory]         # Same as previous line, uses "S"
+ l                          # List abbrevs
+ g name                     # cd (go) to dir
  name                       # Same as previous line, using dynamic alias
- R name [name...]           # Remove a directory abbrev
+ r name [name...]           # Remove a directory abbrev
  ls $name/*.eps             # Use environment variables
 
 =head1 DESCRIPTION
@@ -420,23 +420,23 @@ just replace these letters with "da -s" etc.
 Go to a directory and store "paper" as an abbreviation for it
 
     cd /home/dominik/tex/science/paper_vega_stars/version2
-    S paper
+    s paper
 
 Go to another directory and store "poster" as an abbreviation for it
 
     cd ~/posters/workshop_copenhagen
-    S poster
+    s poster
 
 List the available abbreviations
 
-    L
+    l
     > paper  /home/dominik/tex/science/paper_vega_stars/version2
     > poster /home/dominik/posters/workshop_copenhagen
 
 Go back to the first directory.  B<dirabbrev> supports three different
 ways to do this:
 
-    G paper                          # works always
+    g paper                          # works always
     cd $paper                        # with environment variable tracking
     paper                            # with alias tracking
 
@@ -451,7 +451,7 @@ Copy a file to the poster directory
 Remove all abbreviations starting with "p".  Note that wildcard
 characters have to be quoted to protect them from the shell.
 
-    R p\*
+    r p\*
 
 
 If a directory path contains space characters, environment variables
