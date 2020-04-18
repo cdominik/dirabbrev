@@ -9,12 +9,12 @@ B<dirabbrev> - dynamic abbreviations for directories (paths)
  alias da 'eval `dirabbrev -e -a \!*`'; da -d
  alias s 'da -s'
  alias g 'da -g'
- alias l 'da -l'
+ alias v 'da -l'
  alias r 'da -r'
 
  da -s name [directory]     # Store abbrev for directory
  s name [directory]         # Same as previous line, uses "S"
- l                          # List abbrevs
+ v                          # List (view) abbrevs
  g name                     # cd (go) to dir
  name                       # Same as previous line, using dynamic alias
  r name [name...]           # Remove a directory abbrev
