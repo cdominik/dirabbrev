@@ -157,7 +157,7 @@ Go to another directory and store "poster" as an abbreviation for it
 
 List the available abbreviations
 
-    l
+    v
     > paper  /home/dominik/tex/science/paper_vega_stars/version2
     > poster /home/dominik/posters/workshop_copenhagen
 
