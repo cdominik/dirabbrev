@@ -32,18 +32,19 @@ $abbrev_file = "$ENV{HOME}/.abbrev";
 # %n stands for the name of the environment variable, %d for the value.
 %setenv =   ("csh"  => "setenv %n '%d'",   "tcsh" => "setenv %n '%d'",
              "bash" => "export %n='%d'",   "sh"   => "set %n='%d';export %n",
-             "ksh"  => "export %n='%d'");
+             "ksh"  => "export %n='%d'",   "zsh"  => "export %n='%d'");
 %unsetenv = ("csh"  => "unsetenv %n",      "tcsh" => "unsetenv %n",
              "bash" => "unset %n",         "sh"   => "unset %n",
-             "ksh"  => "unset %n");
+             "ksh"  => "unset %n",         "zsh"  => "unset %n");
 %alias  =   ("csh"  => "alias %n 'cd \"%d\";pwd'",
 	     "tcsh" => "alias %n 'cd \"%d\";pwd'",
              "bash" => "alias %n='cd \"%d\";pwd'",
 	     "sh"   => "alias %n='cd \"%d\"';pwd",
-             "ksh"  => "alias %n='cd \"%d\"';pwd");
+             "ksh"  => "alias %n='cd \"%d\"';pwd",
+             "zsh"  => "alias %n='cd \"%d\";pwd'");
 %unalias =  ("csh"  => "unalias %n",       "tcsh" => "unalias %n",
              "bash" => "unalias %n",       "sh"   => "unalias %n",
-             "ksh"  => "unalias %n");
+             "ksh"  => "unalias %n",       "zsh"  => "unalias %n");
 
 getopts('sglLrRaeduvqhS:') or &usage,exit(1);
 
