@@ -4,7 +4,7 @@
 # Copyright (C) 2004, 2007, 2020 Carsten Dominik
 # Manpage with 'perldoc dirabbrev'
 
-# Version: 2.4
+# Version: 2.5
 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -73,14 +73,17 @@ if ($opt_s) {
   # Store a directory abbreviation
   ($name,$path) = (lc($ARGV[0]),($ARGV[1] or `pwd`));
   chomp $path; $path =~ s|/$||;
-  die "usage: $me -s name [directory]" unless $name;
-  # Ask the shell to exand initial . and ..
-  if ($path =~ /^[.~]/) {$path = `cd $path;pwd`; chomp $path}
-  $dir{lc($name)} = $path;
-  print STDERR "Storing $name -> $path\n" unless $opt_q;
-  &shell(&setenv($name)) if $opt_e;
-  &shell(&alias($name))  if $opt_a;
-  &writelist;
+  if ($name) {
+    # Ask the shell to exand initial . and ..
+    if ($path =~ /^[.~]/) {$path = `cd $path;pwd`; chomp $path}
+    $dir{lc($name)} = $path;
+    print STDERR "Storing $name -> $path\n" unless $opt_q;
+    &shell(&setenv($name)) if $opt_e;
+    &shell(&alias($name))  if $opt_a;
+    &writelist;
+  } else {
+    system("$0 -h")
+  }
 
 } elsif ($opt_h) {
 
@@ -331,9 +334,10 @@ additional aliases for "da -s", "da -g" etc, see above under SYNOPSIS.
 
 =item B<-s> name [directory]
 
-Store NAME as an abbreviation for DIRECTORY.  When DIRECTORY is
-omitted, the current working directory is used.  NAME is always
-converted to lower case.
+Store NAME as an abbreviation for DIRECTORY.  NAME is always
+converted to lower case.  When DIRECTORY is omitted, the current
+working directory is used.  When name is also omitted, list
+abbreviations for the current directory.
 
 =item B<-l>
 
@@ -393,9 +397,9 @@ defined/removed.
 =item B<-S> shell
 
 Select the syntax appropriate for SHELL.  Supported shells are bash,
-sh, ksh, csh, and tcsh.  Normally B<dirabbrev> can figure out the
-correct shell syntax by itself, so this option is only a fallback for
-strange or buggy setups where this might not work.
+sh, zsh, ksh, csh, and tcsh.  Normally B<dirabbrev> can figure out
+the correct shell syntax by itself, so this option is only a
+fallback for strange or buggy setups where this might not work.
 
 =item B<-v>
 
